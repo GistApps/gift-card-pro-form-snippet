@@ -4,7 +4,7 @@ This repository contains the Shopify snippets to create a custom Gift Card Pro p
 If you are planning to use the default purchase flow built into Gift Card Pro, then these are not required.
 
 
-#### Installation
+## Installation
 
 Go to your live theme, and select "Edit Code" under the dropdown menu, create a new product template for your theme called "custom-gift-card-pro.liquid". Copy all the contents of your default product template to this template.
 
@@ -25,26 +25,26 @@ There are two files that need to be added to your Shopify theme:
 In the "custom-gift-card-pro.liquid" template, look for the variant selectors. It may be easier to find them if you navigate to your product page, then right click on them and select inspect to get a better idea of what they should look like. Once your variant selectors have been found, add `{% render 'gift_card_pro_form' %}` under them and any conditional logic surrounding them.
 
 
-#### Testing and Potential Additional Steps.
+## Testing and Potential Additional Steps.
 
 At this point, the new form fields should appear but may not be functional yet. Try adding two gift cards to your cart, the first one should have all the fields are filled out correctly, while the second should have incorrectly filled or empty fields.
 
-##### Correctly Filled Gift Card
+### Correctly Filled Gift Card
 After adding the one with filled fields, go to your cart page. If the properties appear, move on to testing the incorrectly filled gift card.
 If no properties are displaying, add `.json` to the end of the address bar at the top of your browser. Check if the properties of gift card contains any property starting with `_gcp`. If the properties are showing here but not on the cart page, then a normal gift card pro snippet installation is required.
 If the properties are missing from both the normal cart page and cart.json, Then an additional step must be taken.
 
-###### Additional Setup Step
+#### Additional Setup Step
 in *gift_card_pro_form.liquid*, at the end of each `input` and `textarea` tag, add `form="product-form-{{ section.id }}"` (ex: `<input type="checkbox" id="gcpSendToSelfCheck" value="true" name="properties[_gcp_send_to_self]" form="product-form-{{ section.id }}">`). this will allow the form fields to be read by the product form even if they're not within the product form.
 
-##### Incorrectly Filled Gift Card
+### Incorrectly Filled Gift Card
 If the empty or incorrect gift card is able to submit, then the product form is currently has the `novalidate` property and must be changed.
 
-###### Additional Setup Step
+#### Additional Setup Step
 Find where your product form begins and remove the `novalidate` property from it, the product form can be either an HTML form tag `<form>` or a liquid form tag `{% form %}` so check for both.
 
 
-#### Applying CSS to the Form
+## Applying CSS to the Form
 
 After the form's functionality has been tested, we can move on to styling it to look like the rest of the product page.
 
