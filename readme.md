@@ -6,7 +6,7 @@ If you are planning to use the default purchase flow built into Gift Card Pro, t
 
 ## Installation
 
-Go to your live theme, and select "Edit Code" under the dropdown menu, create a new product template for your theme called "custom-gift-card-pro.liquid". Copy all the contents of your default product template to this template.
+Go to your live theme, and select "Edit Code" under the dropdown menu, create a new product template for your theme called "product.custom-gift-card-pro.liquid". Copy all the contents of your default product template to this template. If your product template is instead a .json file, create "product.custom-gift-card-pro.json" instead.
 
 At this point, it is strongly recommended to duplicate your live theme before continuing, as certain changes can cause issues with your storefront.
 
