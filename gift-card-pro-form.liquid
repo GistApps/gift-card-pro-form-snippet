@@ -1,0 +1,65 @@
+<!-- Gift Card Pro Form Fields -->
+
+<!-- Send to self toggle -->
+<div id="gcpSendToSelf" class="gcp_input">
+  <input type="checkbox" id="gcpSendToSelfCheck" value="true" name="properties[_gcp_send_to_self]">
+  <label for="gcpSendToSelfCheck" class="gcp_label">{{ 'gift-card-pro.purchase.send_to_myself_label' | t }}</label>
+</div>
+<!-- Standard gifting inputs -->
+<div id="gcpRecipientDetailsSection">
+  <div id="gcpRecipientName" class="gcp_input">
+    <label for="gcpRecipientNameField" class="gcp_label">{{ 'gift-card-pro.purchase.recipient_name_label' | t }}</label><br>
+    <input required type="text" id="gcpRecipientNameField" placeholder="{{ 'gift-card-pro.purchase.recipient_name_placeholder' | t }}" name="properties[_gcp_recipient_name]" class="gcp_textbox">
+  </div>
+  <div id="gcpRecipientEmail" class="gcp_input">
+    <label for="gcpRecipientEmailField" class="gcp_label">{{ 'gift-card-pro.purchase.recipient_email_label' | t }}</label><br>
+    <input required type="text" id="gcpRecipientEmailField" placeholder="{{ 'gift-card-pro.purchase.recipient_email_placeholder' | t }}" name="properties[_gcp_recipient_email]" class="gcp_textbox">
+  </div>
+  <div id="gcpRecipientPhone" class="gcp_input">
+    <label for="gcpRecipientPhoneField" class="gcp_label">{{ 'gift-card-pro.purchase.recipient_mobile_number_label' | t }}</label><br>
+    <input type="text" id="gcpRecipientPhoneField" placeholder="{{ 'gift-card-pro.purchase.recipient_mobile_number_placeholder' | t }}" name="properties[_gcp_recipient_phone]" class="gcp_textbox">
+  </div>
+  <div id="gcpRecipientMsg" class="gcp_input">
+    <label for="gcpRecipientMsgField" class="gcp_label">{{ 'gift-card-pro.purchase.gift_message' | t }}</label><br>
+    <textarea id="gcpRecipientMsgField" class="text-area field__input gcp_textbox" name="properties[_gcp_message_text]"></textarea>
+  </div>
+  <div id="gcpSenderName" class="gcp_input">
+    <label for="gcpSenderNameField" class="gcp_label">{{ 'gift-card-pro.purchase.from_label' | t }}</label><br>
+    <input required type="text" id="gcpSenderNameField" placeholder="{{ 'gift-card-pro.purchase.from_placeholder' | t }}" name="properties[_gcp_message_from]" class="gcp_textbox">
+  </div>
+<!-- Send Now and Send Later buttons -->
+  <span id="gcpSendNow" class="gcp_input">
+    <span class="gcp_radio">
+      <input type="radio" id="gcpSendNowButton" value="Send Now" name="properties[_gcp_delivery_time]" checked>
+      <label for="gcpSendNowButton">
+        {{ 'gift-card-pro.purchase.send_now_label' | t }}
+      </label>
+      <input type="radio" id="gcpSendLaterButton" value="Send Later" name="properties[_gcp_delivery_time]">
+      <label for="gcpSendLaterButton">
+        {{ 'gift-card-pro.purchase.send_later_label' | t }}
+      </label>
+    </span>
+<!-- Delivery date scheduler. By default, this will only show up when Send Later is selected -->
+    <span id="gcpDeliveryDate" style="display: none;" class="gcp_input">
+      <label for="gcpDeliveryDateField" class="gcp_label">{{ 'gift-card-pro.purchase.delivery_date_heading' | t }}</label><br>
+      <input type="datetime-local" id="gcpDeliveryDateField" class="gcp_textbox" name="properties[_gcp_delivery_date]">
+    </span>
+</div>
+
+<!-- Greeting card image url -->
+<input name="properties[_gcp_selected_card_image]" type="hidden">
+
+<!-- Beyond this are hidden fields that are required for Gift Card Pro to generate a gift card. Some of these fixed inputs may need to be adjusted. -->
+<!-- Timezone Offset -->
+<input name="properties[_gcp_delivery_timezone]" type="hidden" value="{{ 'now' | date: '%:z' }}">
+<!-- Recipient language -->
+<input name="properties[_gcp_locale]" type="hidden" value="{{ localization.language.iso_code }}">
+<!-- Optionally add in a video message to send to the recipient. Enter the url of the saved video in the below field -->
+<input name="properties[_gcp_video_url]" type="hidden" value="">
+
+<!-- The thumbnail image to use for the video -->
+<input name="properties[_gcp_thumbnail_image]" type="hidden" value="">
+<!-- Leave this empty. For custom pricing, use the Shopify Draft Order API to create a custom priced product, containing all of the above properties -->
+<input name="properties[_gcp_custom_value]" type="hidden" value="">
+
+<script src="{{ 'gift-card-pro-form.js' | asset_url }}" ></script>
